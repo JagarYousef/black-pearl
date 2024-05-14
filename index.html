@@ -283,27 +283,21 @@
                         <div class="col-lg-6 col-md-6 col-sm-6">
                             <div class="pricing-list">
                                 <ul>
-                                    <li>Styling. . . . . . . . . . . . . . . . . . . . . . . . . . . . <span>$25</span>
+                                    <li> Coupe Homme. . . . . . . . . . . . . . . . . . . . . . <span>€15</span>
                                     </li>
-                                    <li>Styling + Color. . . . . . . . . . . . . . . . . . . <span>$65</span></li>
-                                    <li>Styling + Tint. . . . . . . . . . . . . . . . . . . . . .<span>$65</span></li>
-                                    <li> Semi-permanent wave. . . . . . . . . . . . .<span>$65</span></li>
-                                    <li> Cut + Styling. . . . . . . . . . . . . . . . . . . . . .<span>$63</span></li>
-                                    <li> Cut + Styling + Color. . . . . . . . . . . . . <span>$100</span></li>
-                                    <li> Cut + Styling + Tint. . . . . . . . . . . . . . . .<span>$100</span></li>
+                                    <li> Coupe Enfant <code>JUSQU'A 12 ANS</code>. . . . . . . <span>€13</span></li>
+                                    <li> Coupe + Barbe. . . . . . . . . . . . . . . . . . . . . <span>€25</span></li>
+                                    <li> Barbe. . . . . . . . . . . . . . . . . . . . . . . . . . . . . <span>€10</span></li>
                                 </ul>
                             </div>
                         </div>
                         <div class="col-lg-6 col-md-6 col-sm-6">
                             <div class="pricing-list">
                                 <ul>
-                                    <li>Cut. . . . . . . . . . . . . . . . . . . . . . . . . . . . .<span>$25</span>
+                                    <li>Barbe + SOIN VISAGE. . . . . . . . . . . . . . . . . . . <span>€15</span>
                                     </li>
-                                    <li>Shave. . . . . . . . . . . . . . . . . . . . . . . . . . <span>$65</span></li>
-                                    <li>Beard trim. . . . . . . . . . . . . . . . . . . . . . <span>$65</span></li>
-                                    <li>Cut + beard trim. . . . . . . . . . . . . . . . . <span>$65</span></li>
-                                    <li>Cut + shave. . . . . . . . . . . . . . . . . . . . . . .<span>$63</span></li>
-                                    <li>Clean up. . . . . . . . . . . . . . . . . . . . . . . . .<span>$100</span></li>
+                                    <li>SOIN VISAGE. . . . . . . . . . . . . . . . . . . . . . . . . . <span>€10</span></li>
+                                    <li>SHAMPOOING. . . . . . . . . . . . . . . . . . . . . . . . . . <span>€3</span></li>
                                 </ul>
                             </div>
                         </div>
@@ -440,7 +434,12 @@
                                 <h4>Address</h4>
                                 <div class="footer-pera">
                                     <p class="info1">Rue des Guillemins 45 <br>4000 Liège</p>
-
+                                </div>
+                            </div>
+                            <div class="footer-tittle">
+                                <h4>Opening Times</h4>
+                                <div class="footer-pera">
+                                    <p class="info1">Mardi - Dimanche <br>9 AM - 7 PM</p>
                                 </div>
                             </div>
                             <!-- Form -->
@@ -546,19 +545,52 @@
 <script src="./assets/js/main.js"></script>
 
 <script>
+    // Function to handle smooth scrolling
+    function scrollToTarget(target) {
+        window.scrollTo({
+            top: target.offsetTop,
+            behavior: 'smooth'
+        });
+    }
+
+    // Function to set active menu item based on scroll position
+    function setActiveMenuItem() {
+        const navigationLinks = document.querySelectorAll('#navigation a');
+        const scrollPosition = window.scrollY;
+
+        navigationLinks.forEach(link => {
+            const targetId = link.getAttribute('href').substring(1);
+            const target = document.getElementById(targetId);
+
+            if (target.offsetTop <= scrollPosition && target.offsetTop + target.offsetHeight > scrollPosition) {
+                navigationLinks.forEach(link => {
+                    link.parentElement.classList.remove('active');
+                });
+                link.parentElement.classList.add('active');
+            } else {
+                link.parentElement.classList.remove('active');
+            }
+        });
+    }
+
+    // Event listener for smooth scrolling
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
-
             const targetId = this.getAttribute('href').substring(1);
             const target = document.getElementById(targetId);
+            scrollToTarget(target);
 
-            window.scrollTo({
-                top: target.offsetTop,
-                behavior: 'smooth'
+            // Set active class to the clicked link's parent li
+            document.querySelectorAll('#navigation li').forEach(li => {
+                li.classList.remove('active');
             });
+            this.parentElement.classList.add('active');
         });
     });
+
+
+
 </script>
 </body>
 </html>
