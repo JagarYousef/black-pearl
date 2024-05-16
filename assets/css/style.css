@@ -1957,8 +1957,8 @@ hr {
 }
 
 .preloader .preloader-circle {
-    width: 200px;
-    height: 200px;
+    width: 75px;
+    height: 75px;
     position: relative;
     border-style: solid;
     border-width: 1px;
@@ -2001,7 +2001,7 @@ hr {
 }
 
 .preloader .preloader-img img {
-    max-width: 200px
+    max-width: 75px
 }
 
 .preloader .pere-text strong {
